@@ -1,5 +1,5 @@
 {
-  "name": "mean",
+  "name": "allplancharts",
   "main": "server.js",
   "devDependencies": {
     "gulp": "^3.8.10",
@@ -15,6 +15,11 @@
     "jshint-stylish": "^1.0.0"
   },
   "dependencies": {
-    "express": "^4.10.7"
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.9.3",
+    "express": "^4.10.7",
+    "jsonwebtoken": "^1.2.0",
+    "mongoose": "~3.8.19",
+    "morgan": "~1.5.0"
   }
 }
