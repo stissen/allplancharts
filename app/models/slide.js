@@ -7,4 +7,4 @@ var SlideSchema   = new Schema({
 	text: { type: String, required: true}
 });
 
-module.exports = mongoose.model('Slide', SlideshowSchema);
+module.exports = mongoose.model('Slide', SlideSchema);

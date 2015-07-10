@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser'); 	// get body-parser
 var User       = require('../models/user');
 var Slideshow  = require('../models/slideshow');
+var Slide  = require('../models/slide');
 var jwt        = require('jsonwebtoken');
 var config     = require('../../config');
 
@@ -195,11 +196,13 @@ module.exports = function(app, express) {
 	// ----------------------------------------------------
 	apiRouter.route('/slideshows')
 
-		// create a user (accessed at POST http://localhost:8080/slideshows)
+		// create a slide (accessed at POST http://localhost:8080/slideshows)
 		.post(function(req, res) {
 			
 			var slideshow = new Slideshow();		// create a new instance of the Slideshow model
-			slideshow.slideshowId = req.body.slideshowId;  // set the slideshowId name (comes from the request)
+			slideshow.slideshowId = req.body.slideshowId;  // set the slideshowId (comes from the request)
+			
+			//@ToDo how to add arrays?
 			
 			slideshow.save(function(err) {
 				if (err) {
@@ -222,7 +225,7 @@ module.exports = function(app, express) {
 			Slideshow.find({}, function(err, slideshows) {
 				if (err) res.send(err);
 
-				// return the users
+				// return the slideshows
 				res.json(slideshows);
 			});
 		})
@@ -235,7 +238,7 @@ module.exports = function(app, express) {
 			});
 		});
 
-	// on routes that end in /users/:user_id
+	// on routes that end in /slideshows/:slideshowId
 	// ----------------------------------------------------
 	apiRouter.route('/slideshows/:slideshowId')
 
@@ -261,6 +264,77 @@ module.exports = function(app, express) {
 		});
 
 
+
+	// on routes that end in /slides
+	// ----------------------------------------------------
+	apiRouter.route('/slides')
+
+		// create a slide (accessed at POST http://localhost:8080/slides)
+		.post(function(req, res) {
+			
+			var slide = new Slide();		// create a new instance of the Slide model
+			slide.slideId = req.body.slideId;  // set the slideId (comes from the request)
+			slide.text = req.body.text;  // set the text (comes from the request)
+			
+			slide.save(function(err) {
+				if (err) {
+					// duplicate entry
+					if (err.code == 11000) 
+						return res.json({ success: false, message: 'A slide with that name already exists. '});
+					else 
+						return res.send(err);
+				}
+
+				// return a message
+				res.json({ message: 'Slide created!' });
+			});
+
+		})
+
+		// get all the slides (accessed at GET http://domain/api/slides)
+		.get(function(req, res) {
+
+			Slide.find({}, function(err, slides) {
+				if (err) res.send(err);
+
+				// return the slides
+				res.json(slides);
+			});
+		})
+		
+		.delete(function(req, res) {
+			Slide.remove({}, function(err, slides) {
+				if (err) res.send(err);
+
+				res.json({ message: 'Successfully deleted' });
+			});
+		});
+/*
+	// on routes that end in /slideshows/:slideshowId
+	// ----------------------------------------------------
+	apiRouter.route('/slideshows/:slideshowId')
+
+		// get the slideshow with that id
+		.get(function(req, res) {
+			Slideshow.findBySlideshowId(req.params.slideshowId, function(err, slideshow) { 
+				if (err) res.send(err);
+
+				// return that user
+				res.json(slideshow); 
+			});
+		})
+
+		// delete the slideshow with this slideshowId
+		.delete(function(req, res) {
+			Slideshow.remove({
+				slideshowId: req.params.slideshowId
+			}, function(err, user) {
+				if (err) res.send(err);
+
+				res.json({ message: 'Successfully deleted' });
+			});
+		});
+*/
 	// api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);
