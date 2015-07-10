@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 // log all requests to the console 
 app.use(morgan('dev'));
 
-// connect to our database (hosted on modulus.io)
+// connect to our database
 mongoose.connect(config.database); 
 
 // set static files location

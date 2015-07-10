@@ -1,5 +1,6 @@
 var bodyParser = require('body-parser'); 	// get body-parser
 var User       = require('../models/user');
+var Slideshow  = require('../models/slideshow');
 var jwt        = require('jsonwebtoken');
 var config     = require('../../config');
 
@@ -9,33 +10,6 @@ var superSecret = config.secret;
 module.exports = function(app, express) {
 
 	var apiRouter = express.Router();
-
-	// route to generate sample user
-	apiRouter.post('/sample', function(req, res) {
-
-		// look for the user named chris
-		User.findOne({ 'username': 'chris' }, function(err, user) {
-
-			// if there is no chris user, create one
-			if (!user) {
-				var sampleUser = new User();
-
-				sampleUser.name = 'Chris';  
-				sampleUser.username = 'chris'; 
-				sampleUser.password = 'supersecret';
-
-				sampleUser.save();
-			} else {
-				console.log(user);
-
-				// if there is a chris, update his password
-				user.password = 'supersecret';
-				user.save();
-			}
-
-		});
-
-	});
 
 	// route to authenticate a user (POST http://localhost:8080/api/authenticate)
 	apiRouter.post('/authenticate', function(req, res) {
@@ -215,6 +189,77 @@ module.exports = function(app, express) {
 				res.json({ message: 'Successfully deleted' });
 			});
 		});
+
+
+	// on routes that end in /slideshows
+	// ----------------------------------------------------
+	apiRouter.route('/slideshows')
+
+		// create a user (accessed at POST http://localhost:8080/slideshows)
+		.post(function(req, res) {
+			
+			var slideshow = new Slideshow();		// create a new instance of the Slideshow model
+			slideshow.slideshowId = req.body.slideshowId;  // set the slideshowId name (comes from the request)
+			
+			slideshow.save(function(err) {
+				if (err) {
+					// duplicate entry
+					if (err.code == 11000) 
+						return res.json({ success: false, message: 'A slideshow with that name already exists. '});
+					else 
+						return res.send(err);
+				}
+
+				// return a message
+				res.json({ message: 'Slideshow created!' });
+			});
+
+		})
+
+		// get all the slideshows (accessed at GET http://domain/api/slideshows)
+		.get(function(req, res) {
+
+			Slideshow.find({}, function(err, slideshows) {
+				if (err) res.send(err);
+
+				// return the users
+				res.json(slideshows);
+			});
+		})
+		
+		.delete(function(req, res) {
+			Slideshow.remove({}, function(err, slideshows) {
+				if (err) res.send(err);
+
+				res.json({ message: 'Successfully deleted' });
+			});
+		});
+
+	// on routes that end in /users/:user_id
+	// ----------------------------------------------------
+	apiRouter.route('/slideshows/:slideshowId')
+
+		// get the slideshow with that id
+		.get(function(req, res) {
+			Slideshow.findBySlideshowId(req.params.slideshowId, function(err, slideshow) { 
+				if (err) res.send(err);
+
+				// return that user
+				res.json(slideshow); 
+			});
+		})
+
+		// delete the slideshow with this slideshowId
+		.delete(function(req, res) {
+			Slideshow.remove({
+				slideshowId: req.params.slideshowId
+			}, function(err, user) {
+				if (err) res.send(err);
+
+				res.json({ message: 'Successfully deleted' });
+			});
+		});
+
 
 	// api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
