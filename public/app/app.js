@@ -1,4 +1,4 @@
-angular.module('chartsApp', ['ngAnimate', 'app.routes', 'authService', 'mainCtrl', 'userCtrl', 'userService'])
+angular.module('chartsApp', ['ngAnimate', 'app.routes', 'authService', 'mainCtrl', 'userCtrl', 'userService','slideshowService', 'slideshowCtrl'])
 
 // application configuration to integrate token into requests
 .config(function($httpProvider) {

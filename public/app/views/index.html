@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>User CRM</title>
+	<title>Allplan Charts</title>
 
 	<!-- FOR ANGULAR ROUTING -->
 	<base href="/">
@@ -22,10 +22,12 @@
 	<!-- controllers -->
 	<script src="app/controllers/mainCtrl.js"></script>
 	<script src="app/controllers/userCtrl.js"></script>
+	<script src="app/controllers/slideshowCtrl.js"></script>
 
 	<!-- services -->
 	<script src="app/services/authService.js"></script>
 	<script src="app/services/userService.js"></script>
+	<script src="app/services/slideshowService.js"></script>
 
 	<!-- main Angular app files -->
 	<script src="app/app.routes.js"></script>
@@ -37,11 +39,8 @@
 <header>
 	<div class="navbar navbar-inverse" ng-if="main.loggedIn">
 	<div class="container">
-		<div class="navbar-header">
-			<a href="/" class="navbar-brand"><span class="glyphicon glyphicon-fire text-danger"></span> User CRM</a>
-		</div>	
 		<ul class="nav navbar-nav">
-			<li><a href="/users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+			<li><a href="/slideshows"><span class="glyphicon glyphicon-user"></span> Allplan Charts</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>

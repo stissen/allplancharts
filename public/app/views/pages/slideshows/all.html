@@ -2,22 +2,21 @@
 	<h1>Slideshows</h1>
 </div>
 
+
 <table class="table table-bordered table-striped" ng-show="slideshow.slideshows">
 	<thead>
 		<tr>
-			<th>_id</th>
 			<th>Slideshow</th>
 			<th>Slides</th>
 			<th class="col-sm-2"></th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="slideshow in slideshow.slideshows">
-			<td>{{ slideshow._id }}</td>
-			<td>{{ slideshow.slideshowId }}</td>
-			<td>{{ slideshow.slideId }}</td>
+		<tr ng-repeat="show in slideshow.slideshows">
+			<td>{{ show.slideshowId }}</td>
+			<td>{{ show.slides }}</td>
 			<td class="col-sm-2">
-				<a ng-href="/slideshows/{{ slideshow._id }}" class="btn btn-primary">View</a>
+				<a ng-href="/slideshows/{{ show.slideshowId }}" class="btn btn-primary">View</a>
 			</td>
 		</tr>
 	</tbody>

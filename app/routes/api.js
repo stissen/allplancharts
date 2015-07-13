@@ -45,7 +45,7 @@ module.exports = function(app, express) {
 	        	name: user.name,
 	        	username: user.username
 	        }, superSecret, {
-	          expiresInMinutes: 1440 // expires in 24 hours
+	          expiresInMinutes: 44640 // 1440 expires in 24 hours
 	        });
 
 	        // return the information including token as JSON
@@ -308,33 +308,33 @@ module.exports = function(app, express) {
 
 				res.json({ message: 'Successfully deleted' });
 			});
-		});
-/*
-	// on routes that end in /slideshows/:slideshowId
+		})
+
+	// on routes that end in /slides/:slideId
 	// ----------------------------------------------------
-	apiRouter.route('/slideshows/:slideshowId')
+	apiRouter.route('/slides/:slideId')
 
 		// get the slideshow with that id
 		.get(function(req, res) {
-			Slideshow.findBySlideshowId(req.params.slideshowId, function(err, slideshow) { 
+			Slide.findBySlideId(req.params.slideId, function(err, slideshow) { 
 				if (err) res.send(err);
 
-				// return that user
+				// return that slide
 				res.json(slideshow); 
 			});
 		})
 
-		// delete the slideshow with this slideshowId
+		// delete the slide with this slideId
 		.delete(function(req, res) {
-			Slideshow.remove({
-				slideshowId: req.params.slideshowId
+			Slide.remove({
+				slideId: req.params.slideId
 			}, function(err, user) {
 				if (err) res.send(err);
 
 				res.json({ message: 'Successfully deleted' });
 			});
 		});
-*/
+
 	// api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);

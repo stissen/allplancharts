@@ -36,8 +36,22 @@ angular.module('app.routes', ['ngRoute'])
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userEditController',
 			controllerAs: 'user'
-		});
-
+		})
+		
+		// show all slideshows
+		.when('/slideshows', {
+			templateUrl: 'app/views/pages/slideshows/all.html',
+			controller: 'slideshowController',
+			controllerAs: 'slideshow'
+		})
+		
+		// page to edit a user
+		.when('/slideshows/:slideshowId', {
+			templateUrl: 'app/views/pages/slideshows/single.html',
+			controller: 'slideshowViewController',
+			controllerAs: 'slideshow'
+		})
+		
 	$locationProvider.html5Mode(true);
 
 });
