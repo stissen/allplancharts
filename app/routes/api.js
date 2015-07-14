@@ -244,11 +244,11 @@ module.exports = function(app, express) {
 
 		// get the slideshow with that id
 		.get(function(req, res) {
-			Slideshow.findBySlideshowId(req.params.slideshowId, function(err, slideshow) { 
+			Slideshow.findBySlideshowId(req.params.slideshowId, function(err, slideshow) {
 				if (err) res.send(err);
 
 				// return that user
-				res.json(slideshow); 
+				res.json(slideshow);
 			});
 		})
 

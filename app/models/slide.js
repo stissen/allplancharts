@@ -8,7 +8,7 @@ var SlideSchema   = new Schema({
 });
 
 SlideSchema.static('findBySlideId', function (slideId, callback) {
-  return this.find({ slideId: slideId }, callback);
+  return this.findOne({ slideId: slideId }, callback);
 });
 
 module.exports = mongoose.model('Slide', SlideSchema);

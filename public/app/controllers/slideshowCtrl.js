@@ -19,7 +19,7 @@ angular.module('slideshowCtrl', ['slideshowService'])
 		});
 })
 
-// controller applied to user creation page
+// controller applied to slideshow view page
 .controller('slideshowViewController', function($routeParams, Slideshow) {
 	
 	var vm = this;

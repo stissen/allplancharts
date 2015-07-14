@@ -9,7 +9,7 @@ var SlideshowSchema   = new Schema({
 
 
 SlideshowSchema.static('findBySlideshowId', function (slideshowId, callback) {
-  return this.find({ slideshowId: slideshowId }, callback);
+  return this.findOne({ slideshowId: slideshowId }, callback);
 });
 
 module.exports = mongoose.model('Slideshow', SlideshowSchema);

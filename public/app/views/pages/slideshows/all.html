@@ -7,15 +7,13 @@
 	<thead>
 		<tr>
 			<th>Slideshow</th>
-			<th>Slides</th>
-			<th class="col-sm-2"></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="show in slideshow.slideshows">
 			<td>{{ show.slideshowId }}</td>
-			<td>{{ show.slides }}</td>
-			<td class="col-sm-2">
+			<td>
 				<a ng-href="/slideshows/{{ show.slideshowId }}" class="btn btn-primary">View</a>
 			</td>
 		</tr>
