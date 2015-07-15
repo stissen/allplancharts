@@ -1,6 +1,6 @@
 angular.module('mainCtrl', [])
 
-.controller('mainController', function($rootScope, $location, Auth) {
+.controller('mainController', function($rootScope, $location, Auth, $cacheFactory) {
 
 	var vm = this;
 
@@ -42,6 +42,7 @@ angular.module('mainCtrl', [])
 	vm.doLogout = function() {
 		Auth.logout();
 		vm.user = '';
+		$cacheFactory.get('$http').removeAll();
 		
 		$location.path('/login');
 	};

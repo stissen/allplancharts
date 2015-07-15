@@ -1,4 +1,4 @@
-angular.module('slideshowCtrl', ['slideshowService', 'slideService'])
+angular.module('slideshowCtrl', [])
 
 .controller('slideshowController', function(Slideshow) {
 
