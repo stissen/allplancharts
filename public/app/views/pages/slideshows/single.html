@@ -1,4 +1,16 @@
 <h1>{{slideshow.slideshow.slideshowId}}</h1>
 
-<p>{{slideshow.slideshow.slides}}</p>
-
+<table class="table table-bordered table-striped" ng-show="slideshow.slides">
+	<thead>
+		<tr>
+			<th>Slide</th>
+			<th>Text</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="slide in slideshow.slides">
+			<td>{{slide.slideId}}</td>
+			<td>{{slide.text}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -45,7 +45,7 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'slideshow'
 		})
 		
-		// page to edit a user
+		// page to view a slideshow
 		.when('/slideshows/:slideshowId', {
 			templateUrl: 'app/views/pages/slideshows/single.html',
 			controller: 'slideshowViewController',
