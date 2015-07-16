@@ -20,7 +20,7 @@ angular.module('slideshowCtrl', [])
 	
 	Slideshow.get($routeParams.slideshowId)
 		.success(function(slideshow) {
-			
+			vm.started = ""
 			// bind the slideshow that comes back to vm.slideshow
 			vm.slideshow = slideshow;
 			var slideIds = slideshow.slides;
@@ -36,7 +36,6 @@ angular.module('slideshowCtrl', [])
 					//if slideId of a slide is in the array slideIds, then add this slide to slides
 					if(slideIds.indexOf(currentSlideId) > -1){
 						slides.push(currentSlide);
-						$log.log('Log: '+currentSlideId);
 					}
 				}
 				//bind slides to slides
@@ -46,6 +45,12 @@ angular.module('slideshowCtrl', [])
 			
 			
 		});
+		
+		vm.startSlideshow = function() {
+			var slides = vm.slideshow.slides
+			$log.log('slideshow started: '+slides);
+			vm.started = "Slideshow started. Slides: "+slides;
+		}
 });
 
 

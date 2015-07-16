@@ -52,6 +52,16 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'slideshow'
 		})
 		
+		// show all slideshows
+		.when('/slides/:slideId', {
+			templateUrl: 'app/views/pages/slides/slide.html',
+			controller: 'slideViewController',
+			controllerAs: 'slide'
+		})
+	
+	
+		
+		
 	$locationProvider.html5Mode(true);
 
 });
