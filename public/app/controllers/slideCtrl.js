@@ -10,6 +10,8 @@ angular.module('slideCtrl', [])
 			vm.slide = slide;
 		  vm.html = "app/views/pages/slides/"+slide.slideId+".html";	
 			});
+			
+			
 });
 
 

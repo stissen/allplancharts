@@ -13,14 +13,58 @@ angular.module('slideshowCtrl', [])
 		});
 })
 
+.controller('slideshowRunController', function($log, $routeParams, Slideshow, Slide, $timeout, $route, $rootScope) {
+	
+	
+	var vm = this;
+	
+	//determine what slidenumber will be shown
+	var counter = $rootScope.counter;
+	if (!counter){
+		counter = 1;
+	}else{
+		counter++;
+	}
+	
+	Slideshow.get($routeParams.slideshowId).success(function(slideshow) {
+		// bind the slideshow that comes back to vm.slideshow
+		vm.slideshow = slideshow;
+		var slides = slideshow.slides;
+		var slidesLength = slides.length;
+		//if at the end of the slideshow: start at the beginning
+		if (counter > slidesLength){
+			counter = 1;
+		}
+		$rootScope.counter = counter;
+		var slideId = slides[counter-1];
+		Slide.get(slideId).success(function(slide) {
+		
+			// bind the slide
+			vm.slide = slide;
+			vm.html = "app/views/pages/slides/"+slide.slideId+".html";	
+		});
+		
+	});
+	
+	//redirect after x secondes
+	$timeout(function () {
+		//check if we're still in the slideshow. Only then do the reload
+		var params = $route.current.templateUrl;
+	  if(params == "app/views/pages/slideshows/run.html"){
+	   	$route.reload();
+	  }
+  }, $routeParams.duration*1000);
+  
+	
+})
+
 // controller applied to slideshow view page
-.controller('slideshowViewController', function($log, $routeParams, Slideshow, Slide) {
+.controller('slideshowViewController', function($log, $routeParams, Slideshow, Slide, $rootScope) {
 	
 	var vm = this;
 	
 	Slideshow.get($routeParams.slideshowId)
 		.success(function(slideshow) {
-			vm.started = "";
 			// bind the slideshow that comes back to vm.slideshow
 			vm.slideshow = slideshow;
 			var slideIds = slideshow.slides;
@@ -40,17 +84,9 @@ angular.module('slideshowCtrl', [])
 				}
 				//bind slides to slides
 				vm.slides = slides;
-			
 			});
-			
-			
 		});
-		
-		vm.startSlideshow = function() {
-			var slides = vm.slideshow.slides
-			$log.log('slideshow started: '+slides);
-			vm.started = "Slideshow coming soon...  Slides: "+slides;
-		}
+		$rootScope.counter = 0;
 });
 
 

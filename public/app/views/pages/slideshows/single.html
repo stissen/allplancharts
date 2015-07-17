@@ -18,11 +18,4 @@
 		</tr>
 	</tbody>
 </table>
-<form ng-submit="slideshow.startSlideshow()">
-	<div class="">
-		<button type="submit" class="btn btn-success btn-lg">Start Slideshow</button>
-	</div>
-</form>
-<div>
-	<h3>{{slideshow.started}}</h3>
-</div>
+<a ng-href='/slideshows/{{slideshow.slideshow.slideshowId}}/run/3' class="btn btn-primary">Start Slideshow</a>

@@ -52,7 +52,14 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'slideshow'
 		})
 		
-		// show all slideshows
+		// page to view a slideshow
+		.when('/slideshows/:slideshowId/run/:duration', {
+			templateUrl: 'app/views/pages/slideshows/run.html',
+			controller: 'slideshowRunController',
+			controllerAs: 'slideshow'
+		})
+		
+		// show one slide
 		.when('/slides/:slideId', {
 			templateUrl: 'app/views/pages/slides/slide.html',
 			controller: 'slideViewController',
