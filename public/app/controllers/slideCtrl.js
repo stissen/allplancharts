@@ -1,5 +1,5 @@
 angular.module('slideCtrl', [])
-.controller('slideViewController', function($log, $routeParams, Slide) {
+.controller('slideViewController', function($log, $routeParams, Slide, $scope) {
     
     var vm = this;
     
@@ -10,8 +10,6 @@ angular.module('slideCtrl', [])
 			vm.slide = slide;
 		  vm.html = "app/views/pages/slides/"+slide.slideId+".html";	
 			});
-			
-			
 });
 
 

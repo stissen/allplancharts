@@ -13,17 +13,20 @@
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 
-	<!-- JS -->
 	<!-- load angular and angular-route via CDN -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+
+	<!-- angular libs -->
+	<script src="assets/libs/angular-google-chart/ng-google-chart.js"></script>
 
 	<!-- controllers -->
 	<script src="app/controllers/mainCtrl.js"></script>
 	<script src="app/controllers/userCtrl.js"></script>
 	<script src="app/controllers/slideshowCtrl.js"></script>
 	<script src="app/controllers/slideCtrl.js"></script>
+	<script src="app/controllers/trafficChartCtrl.js"></script>
 
 	<!-- services -->
 	<script src="app/services/authService.js"></script>
@@ -36,7 +39,7 @@
 	<script src="app/app.js"></script>
 </head>
 <body ng-app="chartsApp" ng-controller="mainController as main">
-
+ 
 <!-- NAVBAR -->
 <header>
 	<div class="" ng-if="main.loggedIn">
