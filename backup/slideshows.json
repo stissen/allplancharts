@@ -1,2 +1,1 @@
-{ "_id" : { "$oid" : "559fbeb4718465936c70a879" }, "slideshowId" : "entwicklung", "slides" : [ "killerChart", "betacallsChart" ], "__v" : 0 }
-{ "_id" : { "$oid" : "559fbec4718465936c70a87a" }, "slideshowId" : "marketing", "slides" : [ "trafficChart", "downloadsChart" ], "__v" : 0 }
+{ "_id" : { "$oid" : "559fbeb4718465936c70a879" }, "slideshowId" : "sampleSlideshow", "slides" : [ "sampleGoogleChart", "sampleTwitterFeed" ], "__v" : 0 }

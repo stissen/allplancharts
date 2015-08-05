@@ -274,7 +274,6 @@ module.exports = function(app, express) {
 			
 			var slide = new Slide();		// create a new instance of the Slide model
 			slide.slideId = req.body.slideId;  // set the slideId (comes from the request)
-			slide.text = req.body.text;  // set the text (comes from the request)
 			
 			slide.save(function(err) {
 				if (err) {

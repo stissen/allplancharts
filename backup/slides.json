@@ -1,4 +1,2 @@
-{ "_id" : { "$oid" : "559fc40141b46de575e47a20" }, "text" : "Awesome killerChart", "slideId" : "killerChart", "__v" : 0 }
-{ "_id" : { "$oid" : "559fc45641b46de575e47a21" }, "text" : "Great betacallsChart", "slideId" : "betacallsChart", "__v" : 0 }
-{ "_id" : { "$oid" : "559fc47341b46de575e47a22" }, "text" : "Wicked trafficChart", "slideId" : "trafficChart", "__v" : 0 }
-{ "_id" : { "$oid" : "559fc4a441b46de575e47a23" }, "text" : "Breathtaking downloadsChart", "slideId" : "downloadsChart", "__v" : 0 }
+{ "_id" : { "$oid" : "55c1c00bff23daba24e14e57" }, "slideId" : "sampleGoogleChart", "__v" : 0 }
+{ "_id" : { "$oid" : "55c1c221ff23daba24e14e58" }, "slideId" : "sampleTwitterFeed", "__v" : 0 }

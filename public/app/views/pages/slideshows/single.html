@@ -4,14 +4,13 @@
 	<thead>
 		<tr>
 			<th>Slide</th>
-			<th>Text</th>
 			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="slide in slideshow.slides">
 			<td>{{slide.slideId}}</td>
-			<td>{{slide.text}}</td>
+
 			<td>
 				<a ng-href="/slides/{{ slide.slideId}}" class="btn btn-primary">View</a>
 			</td>
