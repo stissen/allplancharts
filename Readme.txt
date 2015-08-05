@@ -17,7 +17,7 @@ mongoimport -h ds061298.mongolab.com:61298 -d allplancharts -c slideshows -u max
 mongoimport -h ds061298.mongolab.com:61298 -d allplancharts -c slides -u max -p mustermann --file backup/slides.json
 
 **Create new Slide**
-Http Post /api/slides/ with slideId
+Http Post /api/slides/ with slideId and name
 Extend or create a slideshow
 backup db
 create slides/nameOfSlide.html

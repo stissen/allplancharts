@@ -1,2 +1,2 @@
-{ "_id" : { "$oid" : "55c1c00bff23daba24e14e57" }, "slideId" : "sampleGoogleChart", "__v" : 0 }
-{ "_id" : { "$oid" : "55c1c221ff23daba24e14e58" }, "slideId" : "sampleTwitterFeed", "__v" : 0 }
+{ "_id" : { "$oid" : "55c1c00bff23daba24e14e57" }, "slideId" : "sampleGoogleChart", "name" : "Sample Google Chart", "__v" : 0 }
+{ "_id" : { "$oid" : "55c1c221ff23daba24e14e58" }, "slideId" : "sampleTwitterFeed", "name" : "Sample Twitter Feed", "__v" : 0 }

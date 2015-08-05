@@ -65,6 +65,13 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'slideViewController',
 			controllerAs: 'slide'
 		})
+		
+		// show all slideshows
+		.when('/slides', {
+			templateUrl: 'app/views/pages/slides/all.html',
+			controller: 'slideController',
+			controllerAs: 'slide'
+		})
 	
 	
 		

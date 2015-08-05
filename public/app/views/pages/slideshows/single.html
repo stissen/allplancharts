@@ -1,4 +1,4 @@
-<h1>{{slideshow.slideshow.slideshowId}}</h1>
+<h1>{{slideshow.slideshow.name}}</h1>
 
 <table class="table table-bordered table-striped" ng-show="slideshow.slides">
 	<thead>
@@ -9,7 +9,7 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="slide in slideshow.slides">
-			<td>{{slide.slideId}}</td>
+			<td>{{slide.name}}</td>
 
 			<td>
 				<a ng-href="/slides/{{ slide.slideId}}" class="btn btn-primary">View</a>

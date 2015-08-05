@@ -3,7 +3,8 @@ var Schema       = mongoose.Schema;
 
 // slide schema 
 var SlideSchema   = new Schema({
-	slideId: { type: String, required: true, index: { unique: true }}
+	slideId: { type: String, required: true, unique: true},
+	name: { type: String, required: true, unique: true}
 });
 
 SlideSchema.static('findBySlideId', function (slideId, callback) {

@@ -1,4 +1,18 @@
 angular.module('slideCtrl', [])
+
+.controller('slideController', function($log, $routeParams, Slide, $scope) {
+    
+    var vm = this;
+  	// grab all the slides at page load
+  	Slide.all()
+  		.success(function(data) {
+  
+  		
+  			// bind the slides that come back to vm.slides
+  			vm.slides = data;
+  		});
+})
+
 .controller('slideViewController', function($log, $routeParams, Slide, $scope) {
     
     var vm = this;

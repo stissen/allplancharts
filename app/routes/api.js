@@ -201,7 +201,7 @@ module.exports = function(app, express) {
 			
 			var slideshow = new Slideshow();		// create a new instance of the Slideshow model
 			slideshow.slideshowId = req.body.slideshowId;  // set the slideshowId (comes from the request)
-			
+			slideshow.name = req.body.name;
 			//@ToDo how to add arrays?
 			
 			slideshow.save(function(err) {
@@ -274,7 +274,7 @@ module.exports = function(app, express) {
 			
 			var slide = new Slide();		// create a new instance of the Slide model
 			slide.slideId = req.body.slideId;  // set the slideId (comes from the request)
-			
+			slide.name = req.body.name
 			slide.save(function(err) {
 				if (err) {
 					// duplicate entry

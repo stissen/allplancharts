@@ -4,6 +4,7 @@ var Schema       = mongoose.Schema;
 // slideshow schema 
 var SlideshowSchema   = new Schema({
 	slideshowId: { type: String, required: true, unique: true},
+	name: { type: String, required: true, unique: true},
 	slides: { type: [String], required: false}
 });
 
