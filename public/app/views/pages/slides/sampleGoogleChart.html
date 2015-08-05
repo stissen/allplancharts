@@ -1,4 +1,4 @@
 
-<div ng-controller="sampleGoogleChartController">
-<div google-chart chart="chart" style="{{chart.cssStyle}}"></div>
+<div ng-controller="sampleGoogleChartController as googleChart">
+<div google-chart chart="googleChart.chart" style="{{googleChart.chart.cssStyle}}"></div>
 </div>

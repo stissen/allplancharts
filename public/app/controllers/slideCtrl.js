@@ -1,6 +1,6 @@
 angular.module('slideCtrl', [])
 
-.controller('slideController', function($log, $routeParams, Slide, $scope) {
+.controller('slideController', function($log, $routeParams, Slide) {
     
     var vm = this;
   	// grab all the slides at page load
@@ -13,7 +13,7 @@ angular.module('slideCtrl', [])
   		});
 })
 
-.controller('slideViewController', function($log, $routeParams, Slide, $scope) {
+.controller('slideViewController', function($log, $routeParams, Slide) {
     
     var vm = this;
     
@@ -26,9 +26,11 @@ angular.module('slideCtrl', [])
 			});
 })
 
-.controller('sampleGoogleChartController', function($log, $scope) {
+.controller('sampleGoogleChartController', function() {
     
-		$scope.chart = {
+    var vm = this;
+    
+		vm.chart = {
       "type": "ColumnChart",
       "cssStyle": "",
       "data": {
@@ -49,7 +51,7 @@ angular.module('slideCtrl', [])
 			
 })
 
-.controller('sampleTwitterFeedController', function($log, $scope) {
+.controller('sampleTwitterFeedController', function($log) {
     
 		
 			
