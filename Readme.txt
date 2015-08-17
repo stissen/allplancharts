@@ -22,3 +22,9 @@ Extend or create a slideshow
 backup db
 create slides/nameOfSlide.html
 create controller in slideCtrl.js if necessary
+
+**Code for Slides**
+Twitter: https://twitter.com/settings/widgets
+
+
+Facebook: https://developers.facebook.com/docs/plugins/page-plugin

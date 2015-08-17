@@ -31,7 +31,7 @@ angular.module('slideCtrl', [])
     var vm = this;
     
 		vm.chart = {
-      "type": "ColumnChart",
+      "type": "ColumnChart", 
       "cssStyle": "",
       "data": {
       
@@ -51,10 +51,10 @@ angular.module('slideCtrl', [])
 			
 })
 
-.controller('sampleTwitterFeedController', function($log) {
-    
-		
-			
+.controller('sampleFacebookFeedController', function() {
+  var vm = this;
+  vm.text = "Hello FB World";
+  
 });
 
 
