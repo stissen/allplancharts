@@ -1,2 +1,4 @@
 { "_id" : { "$oid" : "55c1c00bff23daba24e14e57" }, "slideId" : "sampleGoogleChart", "name" : "Sample Google Chart", "__v" : 0 }
 { "_id" : { "$oid" : "55c1c221ff23daba24e14e58" }, "slideId" : "sampleTwitterFeed", "name" : "Sample Twitter Feed", "__v" : 0 }
+{ "_id" : { "$oid" : "55c33726d66496dd3db25444" }, "name" : "Sample Facebook Feed", "slideId" : "sampleFacebookFeed", "__v" : 0 }
+{ "_id" : { "$oid" : "55d45f6c12c342ac3d62db4c" }, "name" : "Sample Dashboard", "slideId" : "sampleDashboard", "__v" : 0 }

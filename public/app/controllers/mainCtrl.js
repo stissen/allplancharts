@@ -31,7 +31,7 @@ angular.module('mainCtrl', [])
 
 				// if a user successfully logs in, redirect to users page
 				if (data.success)			
-					$location.path('/slideshows');
+					$location.path('/slides');
 				else 
 					vm.error = data.message;
 				

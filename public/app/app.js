@@ -5,5 +5,4 @@ angular.module('chartsApp', ['googlechart', 'ngAnimate', 'app.routes', 'authServ
 
 	// attach our auth interceptor to the http requests
 	$httpProvider.interceptors.push('AuthInterceptor');
-
 });

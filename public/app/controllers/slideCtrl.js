@@ -1,29 +1,30 @@
 angular.module('slideCtrl', [])
 
-.controller('slideController', function($log, $routeParams, Slide) {
-    
-    var vm = this;
-  	// grab all the slides at page load
-  	Slide.all()
-  		.success(function(data) {
+.controller('slideController', function($routeParams, Slide) {
+  var vm = this;
   
-  		
-  			// bind the slides that come back to vm.slides
-  			vm.slides = data;
-  		});
+  var slides = [
+    {name : "Sample Google Chart", slideId : "sampleGoogleChart"},
+    {name : "Sample Twitter Feed", slideId : "sampleTwitterFeed"},
+    {name : "Sample Facebook Feed", slideId : "sampleFacebookFeed"},
+    {name : "Sample Dashboard", slideId : "sampleDashboard"}
+  ];
+ 
+  vm.slides = slides;  
+ 
 })
 
-.controller('slideViewController', function($log, $routeParams, Slide) {
-    
-    var vm = this;
-    
-    Slide.get($routeParams.slideId)
-		.success(function(slide) {
-			
-			// bind the slideshow that comes back to vm.slideshow
-			vm.slide = slide;
-		  vm.html = "app/views/pages/slides/"+slide.slideId+".html";	
-			});
+.controller('slideViewController', function($routeParams, Slide) {
+  
+  var vm = this;
+  
+  Slide.get($routeParams.slideId)
+  .success(function(slide) {
+  	
+  	// bind the slideshow that comes back to vm.slideshow
+  	vm.slide = slide;
+    vm.html = "app/views/pages/slides/"+slide.slideId+".html";	
+  	});
 })
 
 .controller('sampleGoogleChartController', function() {
@@ -36,15 +37,15 @@ angular.module('slideCtrl', [])
       "data": {
       
         "cols": [
-              {"id":"","label":"Topping","pattern":"","type":"string"},
-              {"id":"","label":"Slices","pattern":"","type":"number"}
+              {"id":"","pattern":"","type":"string"},
+              {"id":"","label":"Country","pattern":"","type":"number"}
             ],
         "rows": [
-              {"c":[{"v":"Mushrooms","f":null},{"v":3,"f":null}]},
-              {"c":[{"v":"Onions","f":null},{"v":1,"f":null}]},
-              {"c":[{"v":"Olives","f":null},{"v":1,"f":null}]},
-              {"c":[{"v":"Zucchini","f":null},{"v":1,"f":null}]},
-              {"c":[{"v":"Pepperoni","f":null},{"v":2,"f":null}]}
+              {"c":[{"v":"Germany","f":null},{"v":3,"f":null}]},
+              {"c":[{"v":"Austria","f":null},{"v":1,"f":null}]},
+              {"c":[{"v":"Switzerland","f":null},{"v":1,"f":null}]},
+              {"c":[{"v":"France","f":null},{"v":1,"f":null}]},
+              {"c":[{"v":"Spain","f":null},{"v":2,"f":null}]}
             ]
       }
 		}
@@ -52,8 +53,6 @@ angular.module('slideCtrl', [])
 })
 
 .controller('sampleFacebookFeedController', function() {
-  var vm = this;
-  vm.text = "Hello FB World";
   
 });
 
