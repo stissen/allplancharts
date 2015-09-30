@@ -48,8 +48,14 @@ angular.module('slideCtrl', [])
 			
 })
 
-.controller('sampleFacebookFeedController', function() {
+.controller('piwikController', function($timeout, $route) {
+  console.log("piwikController called");
   
+  /*
+  $timeout(function () {
+	  $route.reload();
+  }, 10000);
+  */
 });
 
 
