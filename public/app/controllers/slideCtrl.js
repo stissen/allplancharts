@@ -3,10 +3,12 @@ angular.module('slideCtrl', [])
 .controller('slideController', function($routeParams, Slide) {
   var vm = this;
   
+  // slideId has to have a views/pages/slides/[slideId].html file
   var slides = [
     {name : "Sample Google Chart", slideId : "sampleGoogleChart"},
     {name : "Sample Twitter Feed", slideId : "sampleTwitterFeed"},
     {name : "Sample Facebook Feed", slideId : "sampleFacebookFeed"},
+    {name : "Sample Piwik Dashboard", slideId : "samplePiwik"},
     {name : "Sample Dashboard", slideId : "sampleDashboard"}
   ];
  
@@ -15,16 +17,10 @@ angular.module('slideCtrl', [])
 })
 
 .controller('slideViewController', function($routeParams, Slide) {
-  
-  var vm = this;
-  
-  Slide.get($routeParams.slideId)
-  .success(function(slide) {
-  	
-  	// bind the slideshow that comes back to vm.slideshow
-  	vm.slide = slide;
-    vm.html = "app/views/pages/slides/"+slide.slideId+".html";	
-  	});
+    var vm = this;
+    
+    vm.html = "app/views/pages/slides/"+$routeParams.slideId+".html";	
+
 })
 
 .controller('sampleGoogleChartController', function() {
