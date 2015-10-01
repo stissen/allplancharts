@@ -26,7 +26,7 @@ gulp.task('add', function(){
   return gulp.src(['!node_modules/', './*' ])
     .pipe(git.add({args: '.'}));
 });
-
+//try out
 // git commit task with gulp prompt
 gulp.task('commit', function(){
   // just source anything here - we just wan't to call the prompt for now
