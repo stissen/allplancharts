@@ -47,7 +47,7 @@ gulp.task('commit2', function(){
 // src are the files to commit (or ./*) 
 gulp.task('commit', function(){
   return gulp.src([ '!node_modules/', './*' ])
-    .pipe(git.commit('10'));
+    .pipe(git.commit('11'));
 });
 
 // git push
