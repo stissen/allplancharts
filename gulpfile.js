@@ -26,28 +26,11 @@ gulp.task('add', function(){
   return gulp.src(['!node_modules/', './*' ])
     .pipe(git.add({args: '-A'}));
 });
-//try out
-// git commit task with gulp prompt
-gulp.task('commit2', function(){
-  // just source anything here - we just wan't to call the prompt for now
-  gulp.src('package.json')
-  .pipe(prompt.prompt({
-      type: 'input',
-      name: 'commit',
-      message: 'Please enter commit message...'
-  },  function(res){
-    // now add all files that should be committed
-    // but make sure to exclude the .gitignored ones, since gulp-git tries to commit them, too
-    return gulp.src([ '!node_modules/', './*' ], {buffer:false})
-    .pipe(git.commit(res.commit));
-  }));
-});
-
 
 // src are the files to commit (or ./*) 
 gulp.task('commit', function(){
   return gulp.src([ '!node_modules/', './*' ])
-    .pipe(git.commit('11'));
+    .pipe(git.commit('12'));
 });
 
 // git push
