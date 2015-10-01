@@ -21,7 +21,7 @@ gulp.task('watch', function() {
   gulp.watch('public/assets/css/style.less', ['css']);
 });
 
-// src is the file(s) to add (or ./*) 
+// src is the file(s) to add (or ./*) test
 gulp.task('add', function(){
   return gulp.src(['!node_modules/', './*' ])
     .pipe(git.add({args: '-A'}));
