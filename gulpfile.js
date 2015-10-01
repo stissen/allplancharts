@@ -41,6 +41,7 @@ gulp.task('commit', function(){
     .pipe(git.commit(message));
 });
 
+// git push
 gulp.task('push', function(){
   git.push('origin', 'master', function (err) {
     if (err) throw err;
