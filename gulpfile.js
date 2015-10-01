@@ -23,22 +23,24 @@ gulp.task('watch', function() {
 
 // src is the file(s) to add (or ./*) 
 gulp.task('add', function(){
-  return gulp.src('./git-test/*')
-    .pipe(git.add({args: '-A'}));
+  return gulp.src('./*')
+    .pipe(git.add({args: '.'}));
 });
 
-//add test
+// git commit task with gulp prompt
 gulp.task('commit', function(){
-    var message;
-    gulp.src('./*', {buffer:false})
-    .pipe(prompt.prompt({
-        type: 'input',
-        name: 'commit',
-        message: 'Please enter commit message...'
-    }, function(res){
-        message = res.commit;
-    }))
-    .pipe(git.commit(message));
+  // just source anything here - we just wan't to call the prompt for now
+  gulp.src('package.json')
+  .pipe(prompt.prompt({
+      type: 'input',
+      name: 'commit',
+      message: 'Please enter commit message...'
+  },  function(res){
+    // now add all files that should be committed
+    // but make sure to exclude the .gitignored ones, since gulp-git tries to commit them, too
+    return gulp.src([ '!node_modules/', './*' ], {buffer:false})
+    .pipe(git.commit(res.commit));
+  }));
 });
 
 // git push
