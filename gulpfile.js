@@ -3,11 +3,8 @@ var gulp      = require('gulp');
 var less      = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
 var rename    = require('gulp-rename');
-var jshint    = require('gulp-jshint');
-var concat     = require('gulp-concat');
-var uglify     = require('gulp-uglify');
-var ngAnnotate = require('gulp-ng-annotate');
-var nodemon    = require('gulp-nodemon');
+var git       = require('gulp-git');
+var prompt       = require('gulp-prompt');
 
 // define a task called css
 gulp.task('css', function() {
@@ -19,52 +16,30 @@ gulp.task('css', function() {
     .pipe(gulp.dest('public/assets/css'));
 });
 
-// task for linting js files
-gulp.task('js', function() {
-  return gulp.src(['server.js', 'public/app/*.js', 'public/app/**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-});
-
-// task to lint, minify, and concat frontend files
-gulp.task('scripts', function() {
-  return gulp.src(['public/app/*.js', 'public/app/**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('all.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('public/dist'));
-});
-
-// task to lint, minify, and concat frontend angular files
-gulp.task('angular', function() {
-  return gulp.src(['public/app/*.js', 'public/app/**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(ngAnnotate())
-    .pipe(concat('app.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('public/dist'));
-});
-
 gulp.task('watch', function() {
   // watch the less file and run the css task
   gulp.watch('public/assets/css/style.less', ['css']);
-
-  // watch js files and run lint and run js and angular tasks
-  gulp.watch(['server.js', 'public/app/*.js', 'public/app/**/*.js'], ['js', 'angular']);
 });
 
-gulp.task('nodemon', function() {
-  nodemon({
-    script: 'server.js',
-    ext: 'js less html'
-  })
-    .on('start', ['watch'])
-    .on('change', ['watch'])
-    .on('restart', function() {
-      console.log('Restarted!');
-    });
+// src is the file(s) to add (or ./*) 
+gulp.task('add', function(){
+  return gulp.src('./git-test/*')
+    .pipe(git.add({args: '-A'}));
 });
 
-gulp.task('default', ['nodemon']);
+gulp.task('commit', function(){
+    var message;
+    gulp.src('./*', {buffer:false})
+    .pipe(prompt.prompt({
+        type: 'input',
+        name: 'commit',
+        message: 'Please enter commit message...'
+    }, function(res){
+        message = res.commit;
+    }))
+    .pipe(git.commit(message));
+});
+
+
+
+gulp.task('default', ['css']);
