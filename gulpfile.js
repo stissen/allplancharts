@@ -23,7 +23,7 @@ gulp.task('watch', function() {
 
 // src is the file(s) to add (or ./*) 
 gulp.task('add', function(){
-  return gulp.src('./*')
+  return gulp.src(['!node_modules/', './*' ])
     .pipe(git.add({args: '.'}));
 });
 
