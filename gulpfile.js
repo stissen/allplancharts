@@ -28,7 +28,7 @@ gulp.task('add', function(){
 });
 //try out
 // git commit task with gulp prompt
-gulp.task('commit', function(){
+gulp.task('commit2', function(){
   // just source anything here - we just wan't to call the prompt for now
   gulp.src('package.json')
   .pipe(prompt.prompt({
@@ -41,6 +41,13 @@ gulp.task('commit', function(){
     return gulp.src([ '!node_modules/', './*' ], {buffer:false})
     .pipe(git.commit(res.commit));
   }));
+});
+
+
+// src are the files to commit (or ./*) 
+gulp.task('commit', function(){
+  return gulp.src([ '!node_modules/', './*' ])
+    .pipe(git.commit('7'));
 });
 
 // git push
