@@ -27,6 +27,7 @@ gulp.task('add', function(){
     .pipe(git.add({args: '-A'}));
 });
 
+//add test
 gulp.task('commit', function(){
     var message;
     gulp.src('./*', {buffer:false})
@@ -39,7 +40,6 @@ gulp.task('commit', function(){
     }))
     .pipe(git.commit(message));
 });
-
 
 
 gulp.task('default', ['css']);
