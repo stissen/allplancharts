@@ -1,6 +1,6 @@
 angular.module('slideCtrl', [])
 
-.controller('slideController', function($routeParams, Slide) {
+.controller('slideController', function($routeParams, Slide, $window) {
   var vm = this;
   
   // slideId has to have a views/pages/slides/[slideId].html file
@@ -13,14 +13,19 @@ angular.module('slideCtrl', [])
   ];
  
   vm.slides = slides;  
+  
+  //Todo execute this on link
+  vm.loadDashboard = function(dashboard){
+    var slideId = dashboard.slideId; 
+    $window.open ('slides/'+slideId,'_self',false)
+  }
  
 })
 
-.controller('slideViewController', function($routeParams, Slide) {
-    var vm = this;
+.controller('slideViewController', function($routeParams, Slide, $timeout,  $route) {
+   var vm = this;
     
-    vm.html = "app/views/pages/slides/"+$routeParams.slideId+".html";	
-
+   vm.html = "app/views/pages/slides/"+$routeParams.slideId+".html";	
 })
 
 .controller('sampleGoogleChartController', function() {

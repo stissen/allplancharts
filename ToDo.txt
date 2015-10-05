@@ -1,0 +1,2 @@
+Facebook update ohne Reload checken
+Token verlängern wenn kurz vor ablauf
