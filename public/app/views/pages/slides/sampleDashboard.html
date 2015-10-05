@@ -46,13 +46,15 @@
 
 <script>
 	var reloadLiveLoad;
+	var reloadLiveLoadIntervallSec = 60;
 	$('document').ready(function(){
 		if (typeof reloadLiveLoad === 'undefined')
-			reloadLiveLoad = setInterval(refreshLiveLoad,60000);
+			reloadLiveLoad = setInterval(refreshLiveLoad,reloadLiveLoadIntervallSec*1000);
 	});
 	function refreshLiveLoad () {
 		$('#countries').attr('src', $('#countries').attr('src'));
 		$('#facebookContainer').html($('#facebookContainer').html());
+		
 	}
 </script>
 

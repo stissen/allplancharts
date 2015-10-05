@@ -1,5 +1,5 @@
 <div id="fb-root"></div>
-<div id="pageContainer">
+<div id="facebookContainer">
   <div class="fb-page" id="fb-page"
     data-href="https://www.facebook.com/myBackeryInManhatten" 
     data-small-header="true" 
@@ -29,12 +29,12 @@
   }(document, 'script', 'facebook-jssdk'));
 
 	var reloadLiveLoad;
-	
+	var reloadLiveLoadIntervallSec = 60;
 	$('document').ready(function(){
 		if (typeof reloadLiveLoad === 'undefined')
-			reloadLiveLoad = setInterval(refreshLiveLoad,10000);
+			reloadLiveLoad = setInterval(refreshLiveLoad,reloadLiveLoadIntervallSec*1000);
 	});
 	function refreshLiveLoad () {
-   $('#pageContainer').html($('#pageContainer').html());
+		$('#facebookContainer').html($('#facebookContainer').html());
 	}
 </script>
