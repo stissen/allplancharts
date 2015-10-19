@@ -1,4 +1,3 @@
-var bodyParser = require('body-parser'); 	// get body-parser
 var User       = require('../models/user');
 var Slideshow  = require('../models/slideshow');
 var Slide  = require('../models/slide');
@@ -82,6 +81,7 @@ module.exports = function(app, express) {
 	    	});  	   
 	      } else { 
 	        // if everything is good, save to request for use in other routes
+	        console.log("Decoded: "+decoded);
 	        req.decoded = decoded;
 	            
 	        next(); // make sure we go to the next routes and don't stop here
