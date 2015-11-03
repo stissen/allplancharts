@@ -2,7 +2,6 @@ angular.module('slideCtrl', [])
 
 .controller('slideController', function($routeParams, Slide, $window) {
   var vm = this;
-  
   Slide.all().success(function(data) {
     vm.slides = data;  
 	});
@@ -17,6 +16,23 @@ angular.module('slideCtrl', [])
    var vm = this;
     
    vm.html = "app/views/pages/slides/"+$routeParams.slideId+".html";	
+})
+
+// controller applied to slide creation page
+.controller('slideCreateController', function(Slide) {
+	
+	var vm = this;
+
+	// function to create a user
+	vm.saveSlide = function() {
+		vm.message = '';
+		// use the create function in the userService
+		Slide.create(vm.slideData)
+			.success(function(data) {
+				vm.slideData = {};
+				vm.message = data.message;
+			});
+	};	
 })
 
 .controller('sampleGoogleChartController', function() {

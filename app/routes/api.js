@@ -80,7 +80,6 @@ module.exports = function(app, express) {
 	    	});  	   
 	      } else { 
 	        // if everything is good, save to request for use in other routes
-	        console.log("Decoded: "+decoded);
 	        req.decoded = decoded;
 	            
 	        next(); // make sure we go to the next routes and don't stop here

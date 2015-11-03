@@ -38,6 +38,13 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'user'
 		})
 		
+		.when('/slides/create', {
+			templateUrl: 'app/views/pages/slides/create.html',
+			controller: 'slideCreateController',
+			controllerAs: 'slide'
+		})
+	
+		
 		// show one slide
 		.when('/slides/:slideId', {
 			templateUrl: 'app/views/pages/slides/slide.html',
@@ -51,9 +58,6 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'slideController',
 			controllerAs: 'slide'
 		})
-	
-	
-		
 		
 	$locationProvider.html5Mode(true);
 

@@ -14,6 +14,11 @@ angular.module('slideService', [])
 	slideFactory.all = function() {
 		return $http.get('/api/slides/');
 	};
+	
+	// create a user
+	slideFactory.create = function(slideData) {
+		return $http.post('/api/slides/', slideData);
+	};
 
 	// return our entire slideFactory object
 	return slideFactory;
