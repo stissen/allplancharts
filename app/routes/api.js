@@ -1,5 +1,4 @@
 var User       = require('../models/user');
-var Slideshow  = require('../models/slideshow');
 var Slide  = require('../models/slide');
 var jwt        = require('jsonwebtoken');
 var config     = require('../../config');
@@ -191,80 +190,6 @@ module.exports = function(app, express) {
 			});
 		});
 
-
-	// on routes that end in /slideshows
-	// ----------------------------------------------------
-	apiRouter.route('/slideshows')
-
-		// create a slide (accessed at POST http://localhost:8080/slideshows)
-		.post(function(req, res) {
-			
-			var slideshow = new Slideshow();		// create a new instance of the Slideshow model
-			slideshow.slideshowId = req.body.slideshowId;  // set the slideshowId (comes from the request)
-			slideshow.name = req.body.name;
-			//@ToDo how to add arrays?
-			
-			slideshow.save(function(err) {
-				if (err) {
-					// duplicate entry
-					if (err.code == 11000) 
-						return res.json({ success: false, message: 'A slideshow with that name already exists. '});
-					else 
-						return res.send(err);
-				}
-
-				// return a message
-				res.json({ message: 'Slideshow created!' });
-			});
-
-		})
-
-		// get all the slideshows (accessed at GET http://domain/api/slideshows)
-		.get(function(req, res) {
-
-			Slideshow.find({}, function(err, slideshows) {
-				if (err) res.send(err);
-
-				// return the slideshows
-				res.json(slideshows);
-			});
-		})
-		
-		.delete(function(req, res) {
-			Slideshow.remove({}, function(err, slideshows) {
-				if (err) res.send(err);
-
-				res.json({ message: 'Successfully deleted' });
-			});
-		});
-
-	// on routes that end in /slideshows/:slideshowId
-	// ----------------------------------------------------
-	apiRouter.route('/slideshows/:slideshowId')
-
-		// get the slideshow with that id
-		.get(function(req, res) {
-			Slideshow.findBySlideshowId(req.params.slideshowId, function(err, slideshow) {
-				if (err) res.send(err);
-
-				// return that user
-				res.json(slideshow);
-			});
-		})
-
-		// delete the slideshow with this slideshowId
-		.delete(function(req, res) {
-			Slideshow.remove({
-				slideshowId: req.params.slideshowId
-			}, function(err, user) {
-				if (err) res.send(err);
-
-				res.json({ message: 'Successfully deleted' });
-			});
-		});
-
-
-
 	// on routes that end in /slides
 	// ----------------------------------------------------
 	apiRouter.route('/slides')
@@ -313,13 +238,13 @@ module.exports = function(app, express) {
 	// ----------------------------------------------------
 	apiRouter.route('/slides/:slideId')
 
-		// get the slideshow with that id
+		// get the slide with that id
 		.get(function(req, res) {
-			Slide.findBySlideId(req.params.slideId, function(err, slideshow) { 
+			Slide.findBySlideId(req.params.slideId, function(err, slide) { 
 				if (err) res.send(err);
 
 				// return that slide
-				res.json(slideshow); 
+				res.json(slide); 
 			});
 		})
 

@@ -38,27 +38,6 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'user'
 		})
 		
-		// show all slideshows
-		.when('/slideshows', {
-			templateUrl: 'app/views/pages/slideshows/all.html',
-			controller: 'slideshowController',
-			controllerAs: 'slideshow'
-		})
-		
-		// page to view a slideshow
-		.when('/slideshows/:slideshowId', {
-			templateUrl: 'app/views/pages/slideshows/single.html',
-			controller: 'slideshowViewController',
-			controllerAs: 'slideshow'
-		})
-		
-		// page to view a slideshow
-		.when('/slideshows/:slideshowId/run/:duration', {
-			templateUrl: 'app/views/pages/slideshows/run.html',
-			controller: 'slideshowRunController',
-			controllerAs: 'slideshow'
-		})
-		
 		// show one slide
 		.when('/slides/:slideId', {
 			templateUrl: 'app/views/pages/slides/slide.html',
@@ -66,7 +45,7 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'slide'
 		})
 		
-		// show all slideshows
+		// show all slides
 		.when('/slides', {
 			templateUrl: 'app/views/pages/slides/all.html',
 			controller: 'slideController',
