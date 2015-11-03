@@ -3,26 +3,17 @@ angular.module('slideCtrl', [])
 .controller('slideController', function($routeParams, Slide, $window) {
   var vm = this;
   
-  // slideId has to have a views/pages/slides/[slideId].html file
-  var slides = [
-    {name : "Sample Google Chart", slideId : "sampleGoogleChart"},
-    {name : "Sample Twitter Feed", slideId : "sampleTwitterFeed"},
-    {name : "Sample Facebook Feed", slideId : "sampleFacebookFeed"},
-    {name : "Sample Piwik Dashboard", slideId : "samplePiwik"},
-    {name : "Sample Dashboard", slideId : "sampleDashboard"}
-  ];
- 
-  vm.slides = slides;  
+  Slide.all().success(function(data) {
+    vm.slides = data;  
+	});
   
-  //Todo execute this on link
   vm.loadDashboard = function(dashboard){
     var slideId = dashboard.slideId; 
     $window.open ('slides/'+slideId,'_self',false)
   }
- 
 })
 
-.controller('slideViewController', function($routeParams, Slide, $timeout,  $route) {
+.controller('slideViewController', function($routeParams) {
    var vm = this;
     
    vm.html = "app/views/pages/slides/"+$routeParams.slideId+".html";	
@@ -49,18 +40,7 @@ angular.module('slideCtrl', [])
               {"c":[{"v":"Spain","f":null},{"v":2,"f":null}]}
             ]
       }
-		}
-			
-})
-
-.controller('piwikController', function($timeout, $route) {
-  console.log("piwikController called");
-  
-  /*
-  $timeout(function () {
-	  $route.reload();
-  }, 10000);
-  */
+		};
 });
 
 
