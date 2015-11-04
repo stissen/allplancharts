@@ -1,3 +1,0 @@
-Token verlängern wenn kurz vor ablauf
-    - https://github.com/auth0/auth0-angular/blob/master/docs/refresh-token.md
-    - https://auth0.com/docs/refresh-token
